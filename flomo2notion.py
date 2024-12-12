@@ -98,8 +98,9 @@ class Flomo2Notion:
         # 2. 调用notion api获取数据库存在的记录，用slug标识唯一，如果存在则更新，不存在则写入
         notion_memo_list = self.notion_helper.query_all(self.notion_helper.page_id)
         slug_map = {}
-        print('notion_memo=>',notion_memo)
+        print('notion_memo_list=>',notion_memo_list)
         for notion_memo in notion_memo_list:
+            print('notion_memo=>',notion_memo)
             slug_map[notion_utils.get_rich_text_from_result(notion_memo, "slug")] = notion_memo.get("id")
 
         # 3. 轮询flomo的列表数据
